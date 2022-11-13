@@ -1,0 +1,21 @@
+PROGRAM_NAME = test2
+SOURSE_FILES = $(wildcard *.c) 
+OBJECT = main.o test1.o test2.o 
+
+all: ${PROGRAM_NAME}
+
+${PROGRAM_NAME}: test.o
+	gcc ${OBJECT} -o ${PROGRAM_NAME}
+
+test.o:
+	gcc -c ${SOURSE_FILES}
+
+.PHONY: clean clean-all
+
+clean :
+	rm -f ${OBJECT}
+
+clean-all: clean
+	rm -f ${PROGRAM_NAME}
+
+

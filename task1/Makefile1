@@ -1,0 +1,22 @@
+PROGRAM_NAME = test1
+
+all: ${PROGRAM_NAME}
+
+${PROGRAM_NAME}: main.c test1.o test2.o
+	gcc $^ -o $@
+
+test1.o: test1.c
+	gcc -c $<
+
+test2.o: test2.c
+	gcc -c $<
+
+.PHONY: clean clean-all
+
+clean :
+	rm -f *.o
+
+clean-all: clean
+	rm -f ${PROGRAM_NAME}
+
+
